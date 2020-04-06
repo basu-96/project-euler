@@ -11,6 +11,7 @@ int main()
 	{
 		for(n = 1; n < m; n++)
 		{
+			// Ref :- https://en.wikipedia.org/wiki/Pythagorean_triple
 			int a = m*m - n*n;
 			int b = 2 * m * n;
 			int c = m*m + n*n;
