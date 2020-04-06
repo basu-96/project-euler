@@ -2,36 +2,41 @@
 #include<algorithm>
 #include<cmath>
 #include<ctime>
+#include<cstring>
 
 using namespace std;
 // time_t tstart, tend; 
 time_t tstart = time(0);
-bool isPrime(long int n)
-{
-	if (n <= 1) return false;
-
-	for(long int i = 2; i < n-1; i++)
-	{
-		if(n%i == 0) return false;
-	}
-	return true;
-}
 
 int main()
 {
-	long int N = 2000000;
-	long int sum = 0;
-	sum = sum + 2;
-	for(long int i = 3; i < N; i = i + 2)
+	int n = 12;
+	bool prime[n];
+	int sum = 0;
+	memset(prime, true, sizeof(prime));
+	prime[0] = false;
+	prime[1] = false;
+	for(int p = 2; p*p < n; p++)
 	{
-		cout << i << endl;
-		if(isPrime(i))
+		if(prime[p])
 		{
-			sum = sum + i;
+			for(int i = p*p; i < n; i = i+p)
+			{
+				prime[i] = false;
+			}
 		}
 	}
-	cout << endl;
+	for(int i = 0; i < n; i++)
+	{
+		if(prime[i])
+		{
+			sum = sum + i;
+			// cout << i << "\t";
+		}
+	}
+	// cout << endl;
 	cout << sum << endl;
+	// ############################################
 	time_t tend = time(0);
 	cout << "Execution time " << difftime(tend, tstart) << " seconds" << endl;
 	return 0;
