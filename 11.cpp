@@ -42,15 +42,26 @@ int main()
 
 		}
 	}
+	
 	for(int i = 0; i < mat_size - 3; i++)
 	{
 		for(int j = 0; j < mat_size - 3; j++)
-		{
-			int temp;
+		{	
+			int temp;		
 			temp = M[i][j] * M[i+1][j+1] * M[i+2][j+2] * M[i+3][j+3];
 			// cout << M[i][j] << " " << M[i+1][j+1] << " " << M[i+2][j+2] << " " << M[i+3][j+3] << "\t" << temp << endl;
 			if(diag_prod < temp) diag_prod = temp;
 			// cout << diag_prod << endl;
+		}
+	}
+	for(int i = 0; i < mat_size - 3; i++)
+	{
+		for(int j = mat_size - 1; j >= 3; j--)
+		{
+			int temp;
+			temp = M[i][j] * M[i+1][j-1] * M[i+2][j-2] * M[i+3][j-3];
+			// cout << M[i][j] << " " << M[i+1][j+1] << " " << M[i+2][j+2] << " " << M[i+3][j+3] << "\t" << temp << endl;
+			if(diag_prod < temp) diag_prod = temp;
 		}
 	}
 	// cout << endl;
