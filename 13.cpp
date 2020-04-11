@@ -6,6 +6,7 @@
 #include<sstream>
 #include<vector>
 #include <algorithm>
+#include<numeric>
 #include <iterator>
 
 using namespace std;
@@ -13,28 +14,43 @@ using namespace std;
 int main()
 {
 	ifstream infile;
-	infile.open("Problem_13.txt");
+	infile.open("Problem_13.txt"); // Problem_13.txt contains the big number as given in the problem statement
 	vector<vector<int> > L;
-	char c;
-	int n;
+	vector<int> S;
 	while(!infile.eof())
 	{
 		vector<int> temp;
-		if(c == '\n')
+		string str;
+		getline(infile, str);
+		for(int i = 0; i < str.length(); i++)
 		{
-			cout << endl;
-			continue;
+			temp.push_back(str[i]-'0');
 		}
-		else
+		L.push_back(temp);
+	}
+	int carry = 0;
+	int sum = 0;
+	for(int i = 49; i >= 0; i--)
+	{
+		vector<int> temp;
+		for(int j = 0; j < 100; j++)
 		{
-			infile >> c;
-			n = c - '0';
-			cout << n;
-			temp.push_back(n);
+			temp.push_back(L[j][i]);
 		}
-
 		// cout << temp.size() << endl;
-		// L.push_back(temp);
+		sum = accumulate(temp.begin(), temp.end(), carry);
+		// cout << sum << endl;
+		S.push_back(sum%10);
+		carry = (sum - sum%10)/10;
+	}
+	string str = to_string(sum);
+	for(int i = str.length()-2; i >= 0; i--)
+	{
+		S.push_back(str[i]-'0');
+	}
+	for(int i = S.size()-1; i >= S.size()-10; i--)
+	{
+		cout << S[i];
 	}
 	cout << endl;
 	return 0;
