@@ -48,38 +48,3 @@ int main()
 	}
 	return 0;
 }
-	// int bigNum = 1000000;
-	// int chainSize [ bigNum + 1 ];
-	// bool cache [bigNum + 1];
-	// for(int i = 0; i <= bigNum; i++)
-	// {
-	// 	cache[i] = false;
-	// }
-	// chainSize[0] = 0;
-	// cache[0] = true;
-	// chainSize[1] = 1;
-	// cache[1] = true;
-	// for(int n = 2; n < bigNum; n++)
-	// {
-	// 	int t = n;
-	// 	// cache[n] = true;
-	// 	int seqSize = 0;
-	// 	seqSize++;
-	// 	while(t != 1)
-	// 	{
-	// 		if(t%2 == 0) t = t/2;
-	// 		else t = 3*t + 1;
-	// 		seqSize++;
-	// 	}
-	// 	// chainSize[n] = seqSize;
-		// cout << n << "\t" << chainSize[n] << endl;
-	// }
-	// int n = 1;
-	// seqSize++;
-	// while(n != 1)
-	// {
-	// 	seqSize++;
-	// 	if (n%2 == 0) n = n/2;
-	// 	else n = 3*n + 1;
-	// }
-	// cout << seqSize << endl;
